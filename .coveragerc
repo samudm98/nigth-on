@@ -1,0 +1,5 @@
+[run]
+include = nigth_on/*
+omit = *migrations*, *tests*
+plugins =
+    django_coverage_plugin
