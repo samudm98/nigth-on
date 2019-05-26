@@ -275,3 +275,7 @@ nigth_on/media/
 .env
 .envs/*
 !.envs/.local/
+
+\.idea/workspace\.xml
+
+\.idea/
