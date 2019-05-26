@@ -40,9 +40,20 @@ USE_TZ = True
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+# DATABASES = {
+#     "default": env.db("DATABASE_URL", default="postgres:///nigth_on")
+# }
+
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres:///nigth_on")
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'USER': 'debug',
+        'NAME': 'nigth_on',
+        "PASSWORD": "debug",
+        'HOST': 'localhost',
+    },
 }
+
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 # URLS
@@ -73,6 +84,8 @@ THIRD_PARTY_APPS = [
 ]
 LOCAL_APPS = [
     "nigth_on.users.apps.UsersAppConfig",
+    "nigth_on.products.apps.ProductsAppConfig",
+    "nigth_on.pubs.apps.PubsAppConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
