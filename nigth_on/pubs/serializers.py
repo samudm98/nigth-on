@@ -17,7 +17,7 @@ class ImagesSerializer(ModelSerializer):
 
 
 class PubSerializer(ModelSerializer):
-    images = ImagesSerializer()
+    images = ImagesSerializer(many=True)
     class Meta:
         model = Pub
         fields = '__all__'
