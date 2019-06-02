@@ -40,19 +40,19 @@ USE_TZ = True
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-# DATABASES = {
-#     "default": env.db("DATABASE_URL", default="postgres:///nigth_on")
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'USER': 'debug',
-        'NAME': 'nigth_on',
-        "PASSWORD": "debug",
-        'HOST': 'localhost',
-    },
+    "default": env.db("DATABASE_URL", default="postgres:///nigth_on")
 }
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'USER': 'debug',
+#         'NAME': 'nigth_on',
+#         "PASSWORD": "debug",
+#         'HOST': 'localhost',
+#     },
+# }
 
 DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
@@ -74,6 +74,7 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
     "django.contrib.admin",
+    'corsheaders'
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
@@ -137,12 +138,14 @@ AUTH_PASSWORD_VALIDATORS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+CORS_ORIGIN_ALLOW_ALL=True
 
 # STATIC
 # ------------------------------------------------------------------------------
@@ -209,8 +212,7 @@ FIXTURE_DIRS = (str(APPS_DIR.path("fixtures")),)
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#session-cookie-httponly
 SESSION_COOKIE_HTTPONLY = True
-# https://docs.djangoproject.com/en/dev/ref/settings/#csrf-cookie-httponly
-CSRF_COOKIE_HTTPONLY = True
+
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-browser-xss-filter
 SECURE_BROWSER_XSS_FILTER = True
 # https://docs.djangoproject.com/en/dev/ref/settings/#x-frame-options
@@ -247,6 +249,6 @@ ACCOUNT_ADAPTER = "nigth_on.users.adapters.AccountAdapter"
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 SOCIALACCOUNT_ADAPTER = "nigth_on.users.adapters.SocialAccountAdapter"
 
-
+# add comments to deploy
 # Your stuff...
 # ------------------------------------------------------------------------------
