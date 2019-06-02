@@ -17,7 +17,6 @@ class ImagesSerializer(ModelSerializer):
 
 
 class PubSerializer(ModelSerializer):
-    images = ImagesSerializer(many=True)
 
     class Meta:
         model = Pub
@@ -27,6 +26,7 @@ class PubSerializer(ModelSerializer):
 class PubDetailSerializer(ModelSerializer):
     products = ProductSerializer(many=True)
     comments = CommentSerializer(many=True)
+    images = ImagesSerializer(many=True)
 
     class Meta:
         model = Pub
