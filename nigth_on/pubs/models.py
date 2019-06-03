@@ -28,7 +28,7 @@ class ImageModel(models.Model):
 class Comment(models.Model):
     name = models.CharField(max_length=128, blank=False)
     description = models.CharField(max_length=255, blank=True)
-    image = models.ImageField(upload_to='img', null=False)
+    image = models.ImageField(upload_to='img', null=True)
     stars = models.IntegerField(blank=False, null=False, validators=[MinValueValidator(1), MaxValueValidator(5)])
     pub = models.ForeignKey(Pub, null=False, on_delete=models.CASCADE, related_name="comments")
 
